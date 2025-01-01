@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude-like Interface</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="main-title-title">
+                <span class="text"></span><span class="blink">|</span>
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <!-- 여기를 form으로 감싸 Flask와 연동 -->
+            <form 
+                action="/upload" 
+                method="post" 
+                enctype="multipart/form-data"
+                class="input-area" 
+                id="drop-zone"
+            >
+                <textarea
+                    rows="3"
+                    placeholder="파일을 drag&drop을 하거나 아이콘을 눌러 삽입하세요"
+                    disabled
+                ></textarea>
+                <label for="file-input" class="file-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         viewBox="0 0 24 24" 
+                         width="24" 
+                         height="24" 
+                         fill="none" 
+                         stroke="currentColor" 
+                         stroke-width="2" 
+                         stroke-linecap="round" 
+                         stroke-linejoin="round">
+                        <path d="M21.44 11.05L12.05 20.44a5.5 5.5 0 01-7.78-7.78L11.66 5.26a4 4 0 015.66 5.66L10.7 17.54a2.5 2.5 0 01-3.54-3.54l6.36-6.36" />
+                    </svg>
+                </label>
+                <!-- Flask에서 request.files['file']로 받아오기 위해 name="file" 추가 -->
+                <input 
+                    type="file" 
+                    id="file-input" 
+                    class="file-input" 
+                    name="file"
+                >
+                <!-- 업로드 버튼 활성화 및 라벨 수정 -->
+                <button 
+                    type="submit" 
+                    class="submit-button" disabled
+                >
+                    업로드 및 변환
+                </button>
+            </form>
+
+            <div class="toolbar">
+                <div class="model-selector">
+                    <div class="style-chooser">
+                        <!-- 기타 스타일 설정 영역 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaboration-area">
+                <div class="collab-text">
+                    You can convert PDF, PowerPoint, audio, HTML, CSV, JSON, XML, and Zip files into Markdown.
+                </div>
+            </div>
+
+            <div class="file-preview">
+                <label class="close-preview" id="close-preview-label" aria-label="파일 미리보기 닫기" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </label>
+                <img id="image-preview" style="display: none;">
+                <div id="document-preview" class="document-name" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

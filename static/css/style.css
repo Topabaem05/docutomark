@@ -1,0 +1,232 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    background-color: #f2f0e8;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30vh;
+}
+
+.main-title-title {
+    font-size: 32px;
+    color: #2d3748;
+    font-weight: 500;
+    margin: 0;
+    font-style: bold;
+}
+
+.blink {
+    animation: blink 0.5s steps(2, start) 6.4 forwards;    
+    /* animation: blink 1s steps(2, start) infinite; */
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+.chat-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 16px;
+    margin: 50px;
+    /* margin: auto 0; */
+}
+
+.input-area {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+textarea {
+    width: 100%;
+    /* padding: 12px; */
+    border: none;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    position: relative;
+    /* right: 40px; */
+    top: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ba6e6e;
+}
+
+.submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: #ba6e6e;
+}
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    display: none;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    /* border-top: 1px solid #edf2f7; */
+}
+
+.model-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.model-name {
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.style-chooser {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+version-badge {
+    background-color: #010509;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.collaboration-area {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.collab-text {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.suggestion-button {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #4a5568;
+    cursor: pointer;
+}
+
+.suggestion-button:hover {
+    background: #f8f9fa;
+}
+
+.version-badge {
+    background-color: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.file-preview {
+    display: none; /* 초기에는 숨기기 */
+    position: relative; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 100%;
+}
+
+.file-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.file-preview .document-name {
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.close-preview {
+    position: absolute;
+    display: inline-flex;
+    right: 10px;
+    bottom: 0.3vh;
+    background: #ff5c5c;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    cursor: pointer; /* 클릭 가능함을 나타내는 커서 */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.3s;
+}
+
+
+.close-preview:hover {
+    background: #ff1c1c;
+}
+
+/* 닫기 레이블 내 SVG 스타일 */
+.close-preview svg {
+    width: 16px;
+    height: 16px;
+}
+
+.drag-active {
+    border: 2px dashed #007bff;
+    background-color: rgba(0,123, 255 ,0.1);
+    display: flex;
+}
